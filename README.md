@@ -9,13 +9,13 @@ SimplePubSub is a lightweight, dependency free implementation of the publish and
 
 ```javascript
 
-// create a function to recieve message
-var recieve = function(data){
+// create a function to receive message
+var receive = function(data){
   console.log(data);
 }
 
 //subscribe to event. A token is returned which is used for unsubscribing
-var token = SimplePubSub.subscribe('event', recieve);
+var token = SimplePubSub.subscribe('event', receive);
 ```
 
 ### Publishing
@@ -45,7 +45,7 @@ token.unsubscribe();
 ```javascript
 function MyObject() {}
 
-MyObject.prototype.recieve = function(data) {
+MyObject.prototype.receive = function(data) {
 	console.log(data);
 }
 
@@ -53,5 +53,5 @@ var obj = new MyObject();
 
 //you can pass the context as the third parameter, ensuring that when your callback is 
 //called it is called using the correct context.
-var token = SimplePubSub.subscribe('event', obj.recieve, obj);
+var token = SimplePubSub.subscribe('event', obj.receive, obj);
 ```
